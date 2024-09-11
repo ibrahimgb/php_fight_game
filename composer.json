@@ -1,5 +1,6 @@
 {
   "name": "shen/smallgame",
+  "description": "A PHP project for a small fight game.",
   "config": {
     "platform": {
       "php": "8.3.6"

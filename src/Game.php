@@ -31,6 +31,14 @@ class Game {
     private $playerA;
     private $playerB;
 
+    public function getPlayerA() {
+        return $this->playerA;
+    }
+
+    public function getPlayerB() {
+        return $this->playerB;
+    }
+
     public function __construct($input) {
         $lines = explode("\n", trim($input));
 

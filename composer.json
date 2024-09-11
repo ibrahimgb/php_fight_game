@@ -8,7 +8,8 @@
   },
   "require": {
     "kahlan/kahlan": "^4.0",
-    "symfony/console": "^3.4"
+    "symfony/console": "^3.4",
+    "guzzlehttp/guzzle": "^6.5"
   },
   "autoload": {
     "psr-4": {

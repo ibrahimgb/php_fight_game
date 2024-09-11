@@ -6,13 +6,25 @@ use PHPUnit\Framework\TestCase;
 class GameTest extends TestCase {
     
     public function testPlayerInitialization() {
-        $player = new Player('Bob', 30, 7, 4);
+    $input = "Bob 30 7 4\nAlice 20 9 2";
+    $game = new Game($input);
 
-        $this->assertEquals('Bob', $player->name);
-        $this->assertEquals(30, $player->hp);
-        $this->assertEquals(7, $player->attack);
-        $this->assertEquals(4, $player->defense);
-    }
+    $playerA = $game->getPlayerA();
+    $playerB = $game->getPlayerB();
+
+    $this->assertInstanceOf(Player::class, $playerA);
+    $this->assertInstanceOf(Player::class, $playerB);
+
+    $this->assertEquals('Bob', $playerA->name);
+    $this->assertEquals(30, $playerA->hp);
+    $this->assertEquals(7, $playerA->attack);
+    $this->assertEquals(4, $playerA->defense);
+
+    $this->assertEquals('Alice', $playerB->name);
+    $this->assertEquals(20, $playerB->hp);
+    $this->assertEquals(9, $playerB->attack);
+    $this->assertEquals(2, $playerB->defense);
+}
 
     public function testPlayerTakesDamage() {
         $player = new Player('Alice', 20, 9, 2);
@@ -31,15 +43,6 @@ class GameTest extends TestCase {
         $this->assertFalse($player->isAlive());
     }
 
-    public function testGameInitialization() {
-        $data = "Bob 30 7 4\nAlice 20 9 2";
-        $game = new Game($data);
-
-        $this->assertEquals('Bob', $game->playerA->name);
-        $this->assertEquals(30, $game->playerA->hp);
-        $this->assertEquals('Alice', $game->playerB->name);
-        $this->assertEquals(20, $game->playerB->hp);
-    }
 
     public function testGameRun() {
         $data = "Bob 30 7 4\nAlice 20 9 2";
